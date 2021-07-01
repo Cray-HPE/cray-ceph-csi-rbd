@@ -11,4 +11,4 @@ keywords:
 name: cray-ceph-csi-rbd
 sources:
 - https://github.com/ceph/ceph-csi/tree/v3.3.1/charts/ceph-csi-rbd
-version: 3.1.5
+version: 3.2.0
