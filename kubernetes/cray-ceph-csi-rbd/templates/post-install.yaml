@@ -26,7 +26,8 @@ spec:
       restartPolicy: Never
       containers:
         - name: post-install-job
-          image: {{ include "cray-ceph-csi-rbd.image-prefix" . }}loftsman/docker-kubectl:0.2.0
+          image: {{ .Values.kubectl.image.repository}}:{{ .Values.kubectl.image.tag }}
+          imagePullPolicy: {{ .Values.kubectl.image.pullPolicy }}
           command:
             - /bin/sh
             - -c

@@ -1,4 +1,9 @@
----
+kubectl:
+  image:
+    repository: arti.dev.cray.com/csm-docker-stable-local/docker-kubectl
+    tag: 0.3.0
+    pullPolicy: IfNotPresent
+
 ceph-csi-rbd:
 
   nameOverride: ceph-csi-rbd
@@ -92,14 +97,14 @@ ceph-csi-rbd:
   
     registrar:
       image:
-        repository: quay.io/k8scsi/csi-node-driver-registrar
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/k8scsi/csi-node-driver-registrar
         tag: v2.0.1
         pullPolicy: IfNotPresent
       resources: {}
 
     plugin:
       image:
-        repository: quay.io/cephcsi/cephcsi
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/cephcsi/cephcsi
         tag: v3.3.1
         pullPolicy: IfNotPresent
       resources: {}
@@ -176,7 +181,7 @@ ceph-csi-rbd:
   
     provisioner:
       image:
-        repository: quay.io/k8scsi/csi-provisioner
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/k8scsi/csi-provisioner
         tag: v2.0.4
         pullPolicy: IfNotPresent
       resources: {}
@@ -185,7 +190,7 @@ ceph-csi-rbd:
       name: attacher
       enabled: true
       image:
-        repository: quay.io/k8scsi/csi-attacher
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/k8scsi/csi-attacher
         tag: v3.0.2
         pullPolicy: IfNotPresent
       resources: {}
@@ -194,14 +199,14 @@ ceph-csi-rbd:
       name: resizer
       enabled: true
       image:
-        repository: quay.io/k8scsi/csi-resizer
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/k8scsi/csi-resizer
         tag: v1.0.1
         pullPolicy: IfNotPresent
       resources: {}
   
     snapshotter:
       image:
-        repository: quay.io/k8scsi/csi-snapshotter
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/k8scsi/csi-snapshotter
         tag: v3.0.2
         pullPolicy: IfNotPresent
       resources: {}
