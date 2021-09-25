@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: cray-ceph-csi-rbd
 version: 3.3.0
 description: Container Storage Interface (CSI) driver, provisioner, snapshotter, and attacher for Ceph RBD
