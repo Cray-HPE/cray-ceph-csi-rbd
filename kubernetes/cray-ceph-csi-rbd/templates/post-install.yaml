@@ -30,7 +30,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - "kubectl apply -f /apps/storage_classes/sc-kube.yaml; kubectl apply -f /apps/storage_classes/sc-sma.yaml; /scripts/set-default-storageclass.sh"
+            - "kubectl apply -f /apps/storage_classes/sc-kube.yaml --force; kubectl apply -f /apps/storage_classes/sc-sma.yaml; /scripts/set-default-storageclass.sh --force"
           volumeMounts:
             - name: kube-csi-sc-vol
               mountPath: /apps/storage_classes/sc-kube.yaml
