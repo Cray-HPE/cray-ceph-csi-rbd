@@ -97,4 +97,19 @@ ignore:
         reason: Requires analysis
         expires: 2022-02-01T00:00:00.000Z
         created: 2021-11-15T21:56:04.686Z
+  SNYK-CC-K8S-47:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-16T18:56:37.098Z
+  SNYK-CC-K8S-48:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-16T18:56:39.567Z
+  SNYK-CC-K8S-3:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-16T18:56:44.598Z
 patch: {}
