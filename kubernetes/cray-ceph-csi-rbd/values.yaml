@@ -1,4 +1,9 @@
----
+kubectl:
+  image:
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.19.15
+    pullPolicy: IfNotPresent
+
 ceph-csi-rbd:
 
   nameOverride: ceph-csi-rbd
@@ -7,7 +12,7 @@ ceph-csi-rbd:
   rbac:
     # Specifies whether RBAC resources should be created
     create: true
-  
+
   serviceAccounts:
     nodeplugin:
       # Specifies whether a ServiceAccount should be created
@@ -58,38 +63,38 @@ ceph-csi-rbd:
     priorityClassName: csm-high-priority-service
     # if you are using rbd-nbd client set this value to OnDelete
     updateStrategy: RollingUpdate
-  
+
     httpMetrics:
       # Metrics only available for cephcsi/cephcsi => 1.2.0
       # Specifies whether http metrics should be exposed
       enabled: true
       # The port of the container to expose the metrics
       containerPort: 8080
-  
+
       service:
         # Specifies whether a service should be created for the metrics
         enabled: true
         # The port to use for the service
         servicePort: 8080
         type: ClusterIP
-  
+
         # Annotations for the service
         # Example:
         # annotations:
         #   prometheus.io/scrape: "true"
         #   prometheus.io/port: "8080"
         annotations: {}
-  
+
         clusterIP: ""
-  
+
         ## List of IP addresses at which the stats-exporter service is available
         ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
         ##
         externalIPs: []
-  
+
         loadBalancerIP: ""
         loadBalancerSourceRanges: []
-  
+
     registrar:
       image:
         repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
@@ -99,7 +104,9 @@ ceph-csi-rbd:
 
     plugin:
       image:
-        repository: quay.io/cephcsi/cephcsi
+        # XXX quay.io/cephcsi/cephcsi:v3.4.0 has 4 critical (of 8)
+        # XXX vulnerabilities, so we're rebuilding it to resolve them.
+        repository: artifactory.algol60.net/csm-docker/stable/quay.io/cephcsi/cephcsi
         tag: v3.4.0
         pullPolicy: IfNotPresent
       resources: {}
@@ -149,38 +156,38 @@ ceph-csi-rbd:
       enabled: true
       # The port of the container to expose the metrics
       containerPort: 8080
-  
+
       service:
         # Specifies whether a service should be created for the metrics
         enabled: true
         # The port to use for the service
         servicePort: 8080
         type: ClusterIP
-  
+
         # Annotations for the service
         # Example:
         # annotations:
         #   prometheus.io/scrape: "true"
         #   prometheus.io/port: "8080"
         annotations: {}
-  
+
         clusterIP: ""
-  
+
         ## List of IP addresses at which the stats-exporter service is available
         ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
         ##
         externalIPs: []
-  
+
         loadBalancerIP: ""
         loadBalancerSourceRanges: []
-  
+
     provisioner:
       image:
         repository: k8s.gcr.io/sig-storage/csi-provisioner
         tag: v2.2.2
         pullPolicy: IfNotPresent
       resources: {}
-  
+
     attacher:
       name: attacher
       enabled: true
@@ -189,7 +196,7 @@ ceph-csi-rbd:
         tag: v3.2.1
         pullPolicy: IfNotPresent
       resources: {}
-  
+
     resizer:
       name: resizer
       enabled: true
@@ -198,7 +205,7 @@ ceph-csi-rbd:
         tag: v1.2.0
         pullPolicy: IfNotPresent
       resources: {}
-  
+
     snapshotter:
       image:
         repository: k8s.gcr.io/sig-storage/csi-snapshotter
@@ -228,7 +235,7 @@ ceph-csi-rbd:
     domainLabels:
       - failure-domain/region
       - failure-domain/zone
-  
+
   #########################################################
   # Variables for 'internal' use please use with caution! #
   #########################################################
