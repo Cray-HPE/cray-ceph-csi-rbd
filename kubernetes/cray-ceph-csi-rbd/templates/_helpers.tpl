@@ -15,18 +15,3 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 {{- end -}}
-
-{{/*
-Use the ceph-csi-rbd-* helpers, define others here as needed
-*/}}
-
-{{/*
-Get an image prefix
-*/}}
-{{- define "cray-ceph-csi-rbd.image-prefix" -}}
-{{- if .Values.imagesHost -}}
-{{- printf "%s/" .Values.imagesHost -}}
-{{- else -}}
-{{- printf "" -}}
-{{- end -}}
-{{- end -}}
