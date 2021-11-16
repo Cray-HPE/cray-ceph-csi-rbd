@@ -1,0 +1,100 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.22.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-CC-K8S-16:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:53:30.367Z
+  SNYK-CC-K8S-1:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:00.847Z
+  SNYK-CC-K8S-24:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:42.038Z
+  SNYK-CC-K8S-23:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:21.014Z
+  SNYK-CC-K8S-21:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:22.928Z
+  SNYK-CC-K8S-22:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:28.423Z
+  SNYK-CC-K8S-19:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:31.369Z
+  SNYK-CC-K8S-14:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:45.037Z
+  SNYK-CC-K8S-10:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:48.367Z
+  SNYK-CC-K8S-9:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:54:56.622Z
+  SNYK-CC-K8S-6:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:00.348Z
+  SNYK-CC-K8S-37:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:04.794Z
+  SNYK-CC-K8S-17:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:31.326Z
+  SNYK-CC-K8S-38:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:37.167Z
+  SNYK-CC-K8S-4:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:40.460Z
+  SNYK-CC-K8S-5:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:43.002Z
+  SNYK-CC-K8S-8:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:45.400Z
+  SNYK-CC-K8S-41:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:55:59.431Z
+  SNYK-CC-K8S-42:
+    - '*':
+        reason: Requires analysis
+        expires: 2022-02-01T00:00:00.000Z
+        created: 2021-11-15T21:56:04.686Z
+patch: {}
