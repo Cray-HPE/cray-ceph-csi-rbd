@@ -125,6 +125,10 @@ ceph-csi-rbd:
   provisioner:
     name: provisioner
     replicaCount: 3
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 50%
     # if fstype is not specified in storageclass, ext4 is default
     defaultFSType: ext4
     # deployController to enable or disable the deployment of controller which
