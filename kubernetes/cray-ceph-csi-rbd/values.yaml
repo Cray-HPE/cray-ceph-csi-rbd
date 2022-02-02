@@ -97,8 +97,8 @@ ceph-csi-rbd:
 
     registrar:
       image:
-        repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
-        tag: v2.2.0
+        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-node-driver-registrar
+        tag: v2.4.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -107,7 +107,7 @@ ceph-csi-rbd:
         # XXX quay.io/cephcsi/cephcsi:v3.4.0 has 4 critical (of 8)
         # XXX vulnerabilities, so we're rebuilding it to resolve them.
         repository: artifactory.algol60.net/csm-docker/stable/quay.io/cephcsi/cephcsi
-        tag: v3.4.0
+        tag: v3.5.1
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -125,6 +125,10 @@ ceph-csi-rbd:
   provisioner:
     name: provisioner
     replicaCount: 3
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 50%
     # if fstype is not specified in storageclass, ext4 is default
     defaultFSType: ext4
     # deployController to enable or disable the deployment of controller which
@@ -183,8 +187,8 @@ ceph-csi-rbd:
 
     provisioner:
       image:
-        repository: k8s.gcr.io/sig-storage/csi-provisioner
-        tag: v2.2.2
+        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-provisioner
+        tag: v3.1.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -192,8 +196,8 @@ ceph-csi-rbd:
       name: attacher
       enabled: true
       image:
-        repository: k8s.gcr.io/sig-storage/csi-attacher
-        tag: v3.2.1
+        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-attacher
+        tag: v3.4.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -201,15 +205,15 @@ ceph-csi-rbd:
       name: resizer
       enabled: true
       image:
-        repository: k8s.gcr.io/sig-storage/csi-resizer
-        tag: v1.2.0
+        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-resizer
+        tag: v1.3.0
         pullPolicy: IfNotPresent
       resources: {}
 
     snapshotter:
       image:
-        repository: k8s.gcr.io/sig-storage/csi-snapshotter
-        tag: v4.1.1
+        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-snapshotter
+        tag: v4.2.0
         pullPolicy: IfNotPresent
       resources: {}
 

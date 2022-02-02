@@ -42,14 +42,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: ceph-csi-sa
-  namespace: default
+  namespace: ceph-rbd
 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ceph-csi-sa
-  namespace: default
+  namespace: ceph-rbd
   labels:
     app: ceph-csi
 
