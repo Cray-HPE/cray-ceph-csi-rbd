@@ -97,7 +97,7 @@ ceph-csi-rbd:
 
     registrar:
       image:
-        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-node-driver-registrar
+        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-node-driver-registrar
         tag: v2.4.0
         pullPolicy: IfNotPresent
       resources: {}
@@ -187,7 +187,7 @@ ceph-csi-rbd:
 
     provisioner:
       image:
-        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-provisioner
+        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-provisioner
         tag: v3.1.0
         pullPolicy: IfNotPresent
       resources: {}
@@ -196,7 +196,7 @@ ceph-csi-rbd:
       name: attacher
       enabled: true
       image:
-        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-attacher
+        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-attacher
         tag: v3.4.0
         pullPolicy: IfNotPresent
       resources: {}
@@ -205,14 +205,14 @@ ceph-csi-rbd:
       name: resizer
       enabled: true
       image:
-        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-resizer
+        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-resizer
         tag: v1.3.0
         pullPolicy: IfNotPresent
       resources: {}
 
     snapshotter:
       image:
-        repository: artifactory.algol60.net/k8s.gcr.io/sig-storage/csi-snapshotter
+        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-snapshotter
         tag: v4.2.0
         pullPolicy: IfNotPresent
       resources: {}
