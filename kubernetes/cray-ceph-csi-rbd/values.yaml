@@ -1,7 +1,7 @@
 kubectl:
   image:
     repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-    tag: 1.21.12
+    tag: 1.24.17
     pullPolicy: IfNotPresent
 
 ceph-csi-rbd:
