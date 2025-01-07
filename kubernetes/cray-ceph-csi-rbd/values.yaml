@@ -97,8 +97,8 @@ ceph-csi-rbd:
 
     registrar:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-node-driver-registrar
-        tag: v2.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-node-driver-registrar
+        tag: v2.9.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -107,7 +107,7 @@ ceph-csi-rbd:
         # XXX quay.io/cephcsi/cephcsi:v3.4.0 has 4 critical (of 8)
         # XXX vulnerabilities, so we're rebuilding it to resolve them.
         repository: artifactory.algol60.net/csm-docker/stable/quay.io/cephcsi/cephcsi
-        tag: v3.6.2
+        tag: v3.13.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -187,8 +187,8 @@ ceph-csi-rbd:
 
     provisioner:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-provisioner
-        tag: v3.1.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-provisioner
+        tag: v3.6.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -196,8 +196,8 @@ ceph-csi-rbd:
       name: attacher
       enabled: true
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-attacher
-        tag: v3.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-attacher
+        tag: v4.4.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -205,15 +205,15 @@ ceph-csi-rbd:
       name: resizer
       enabled: true
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-resizer
-        tag: v1.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-resizer
+        tag: v1.9.0
         pullPolicy: IfNotPresent
       resources: {}
 
     snapshotter:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-snapshotter
-        tag: v4.2.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-snapshotter
+        tag: v6.2.1
         pullPolicy: IfNotPresent
       resources: {}
 
