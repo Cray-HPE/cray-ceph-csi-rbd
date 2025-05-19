@@ -51,10 +51,18 @@ ceph-csi-rbd:
   #     vaultCAVerify: "false"
   encryptionKMSConfig: {}
 
+  # Labels to apply to all resources
+  commonLabels: {}
+
   # Set logging level for csi containers.
   # Supported values from 0 to 5. 0 for general useful logs,
   # 5 for trace level verbosity.
   logLevel: 0
+  # sidecarLogLevel is the variable for Kubernetes sidecar container's log level
+  sidecarLogLevel: 1
+  # Log slow operations at the specified rate.
+  # Operation is considered slow if it outlives its deadline.
+  logSlowOperationInterval: 30s
 
   nodeplugin:
     name: nodeplugin
@@ -95,10 +103,14 @@ ceph-csi-rbd:
         loadBalancerIP: ""
         loadBalancerSourceRanges: []
 
+    profiling:
+      # enable profiling to check for memory leaks
+      enabled: false
+
     registrar:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-node-driver-registrar
-        tag: v2.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-node-driver-registrar
+        tag: v2.13.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -107,7 +119,7 @@ ceph-csi-rbd:
         # XXX quay.io/cephcsi/cephcsi:v3.4.0 has 4 critical (of 8)
         # XXX vulnerabilities, so we're rebuilding it to resolve them.
         repository: artifactory.algol60.net/csm-docker/stable/quay.io/cephcsi/cephcsi
-        tag: v3.6.2
+        tag: v3.14.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -187,8 +199,8 @@ ceph-csi-rbd:
 
     provisioner:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-provisioner
-        tag: v3.1.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-provisioner
+        tag: v5.2.0
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -196,8 +208,8 @@ ceph-csi-rbd:
       name: attacher
       enabled: true
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-attacher
-        tag: v3.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-attacher
+        tag: v4.8.1
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -205,15 +217,15 @@ ceph-csi-rbd:
       name: resizer
       enabled: true
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-resizer
-        tag: v1.4.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-resizer
+        tag: v1.13.2
         pullPolicy: IfNotPresent
       resources: {}
 
     snapshotter:
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/k8s.gcr.io/sig-storage/csi-snapshotter
-        tag: v4.2.0
+        repository: artifactory.algol60.net/csm-docker/stable/registry.k8s.io/sig-storage/csi-snapshotter
+        tag: v8.2.1
         pullPolicy: IfNotPresent
       resources: {}
 
@@ -229,16 +241,13 @@ ceph-csi-rbd:
       enabled: true
 
   topology:
-    # Specifies whether topology based provisioning support should
-    # be exposed by CSI
-    enabled: false
     # domainLabels define which node labels to use as domains
     # for CSI nodeplugins to advertise their domains
     # NOTE: the value here serves as an example and needs to be
     # updated with node labels that define domains of interest
-    domainLabels:
-      - failure-domain/region
-      - failure-domain/zone
+    domainLabels: []
+    # - topology.kubernetes.io/region
+    # - topology.kubernetes.io/zone
 
   #########################################################
   # Variables for 'internal' use please use with caution! #
@@ -260,6 +269,3 @@ ceph-csi-rbd:
   externallyManagedConfigmap: true
   # Name of the configmap used for encryption kms configuration
   kmsConfigMapName: ceph-csi-encryption-kms-config
-
-  # Custom image variables for HPE Cray
-  imagesHost: "dtr.dev.cray.com"
